@@ -1,0 +1,20 @@
+package med.voll.api.controller;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+//1.@ - para o spring carregar essa classe durante a inicialização do projeto
+//2.@ - o spring vai chamar esse controller quando chegar uma requisição para /medicos
+@RestController
+@RequestMapping("/medicos")
+public class MedicoController {
+
+	//aqui eu digo qual o verbo do protocolo http que esse método vai lidar. Logo, se chegar 
+	//uma requisição do tipo post para a url "/medicos", o spring vai chamar o método abaixo.
+	@PostMapping
+	public void cadastrar(String json) {
+		System.out.println(json);
+	}
+	
+}

@@ -17,7 +17,6 @@ INDEX VERSION 1.132+C:\Users\brend\OneDrive\Documentos\ALURA\springboot\.metadat
 1735921649.index
 2779767160.index
 2586664839.index
-4074466843.index
 4270980269.index
 506108479.index
 784474639.index
