@@ -1,0 +1,8 @@
+package med.voll.api.controller;
+
+@Controller
+public class HelloController {
+
+	
+	
+}
