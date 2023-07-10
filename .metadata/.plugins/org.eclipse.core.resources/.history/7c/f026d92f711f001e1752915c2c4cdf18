@@ -1,0 +1,15 @@
+package med.voll.api.endereco;
+
+import jakarta.validation.constraints.NotBlank;
+
+public record DadosEndereco(
+		@NotBlank
+		String logadouro, 
+		String bairro, 
+		String cep, 
+		String numero, 
+		String complemento, 
+		String cidade, 
+		String uf) {
+
+}
