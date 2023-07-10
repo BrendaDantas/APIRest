@@ -1,0 +1,10 @@
+package med.voll.api.medico;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+//Utilizando o SpringData
+public interface MedicoRepository extends JpaRepository<Medico, Long> {
+	
+	
+
+}

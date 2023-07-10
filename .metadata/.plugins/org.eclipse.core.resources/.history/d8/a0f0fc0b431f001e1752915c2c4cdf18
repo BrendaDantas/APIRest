@@ -1,0 +1,11 @@
+package med.voll.api.medico;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+//Utilizando o SpringData
+//Para pegar o objeto medico e salvar no banco de dados costuma ser usado as classes DAO
+public interface MedicoRepository extends JpaRepository<Medico, Long> {
+	
+	
+
+}

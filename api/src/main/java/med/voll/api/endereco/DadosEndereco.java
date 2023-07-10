@@ -1,5 +1,5 @@
 package med.voll.api.endereco;
 
-public record DadosEndereco(String logadouro, String bairro, String cep, String cidade, String uf, String complemento, String numero) {
+public record DadosEndereco(String logadouro, String bairro, String cep, String numero, String complemento, String cidade, String uf) {
 
 }
