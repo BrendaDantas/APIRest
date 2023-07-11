@@ -76,10 +76,8 @@ public class MedicoController {
 	}	
 	
 	//Inserindo na url um complemento dinâmico
-	//@PathVariable é para dizer ao spring que o id do parâmetro é o mesmo que recebe na url
 	@DeleteMapping("/{id}")
-	@Transactional
 	public void excluir(@PathVariable Long id) {
-		repository.deleteById(id);
+		
 	}
 }
