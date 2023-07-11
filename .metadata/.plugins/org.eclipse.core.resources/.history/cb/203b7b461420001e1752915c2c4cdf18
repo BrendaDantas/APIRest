@@ -3,7 +3,6 @@ package med.voll.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,9 +43,9 @@ public class MedicoController {
 	}
 	
 	//a pageable é uma interface do próprio spring, assim não precisamos fazer tudo na mão
-	//@Page para mudar o padrão da paginação (se o parametro não for passado na url)
+	
 	@GetMapping
-	public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
+	public Page<DadosListagemMedico> listar(Pageable paginacao) {
 		//como o findall me retorn um list de medico(entidade jpa), mas o retorno do método precisa ser list de dadoslistagemmedico
 		//então irei converter de medico para DadosListagemMedico
 		
