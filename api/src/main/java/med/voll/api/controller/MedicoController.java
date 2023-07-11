@@ -52,13 +52,9 @@ public class MedicoController {
 	//@Page para mudar o padrão da paginação (se o parametro não for passado na url)
 	@GetMapping
 	public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
-		//como o findall me retorn um list de medico(entidade jpa), mas o retorno do método precisa ser list de dadoslistagemmedico
-		//então irei converter de medico para DadosListagemMedico
-		
-		//não precisa do 'stream' porque o findall devolve um page e o page já tem um método stream
-		//não precisa também do 'tolist' porque quando chamamos o 'map', ele já faz a conversão e devolve um page do DTO automaticamente
-		//continuamos fazendo um map pois ele devolve um page de 'médico' mas queremos um page de 'dados listagem médico' 
-		return repository.findAll(paginacao).map(DadosListagemMedico::new);
+		/*O findAll atual irá carregar todos os registros, e agora eu só quero carregar os registros cujo 
+		 * atributo 'ativo' seja true*/
+		return repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
 	}
 	
 	@PutMapping
