@@ -75,11 +75,17 @@ public class MedicoController {
 		medico.atualizarInformacoes(dados);		
 	}	
 	
-	//Inserindo na url um complemento dinâmico
-	//@PathVariable é para dizer ao spring que o id do parâmetro é o mesmo que recebe na url
+	/*Tenho que carregar a entidade do banco de dados, inativá-la, setar o atibuto 
+	 * 'ativo' de 'true' para 'false' e disparar o update no banco de dados.  
+	 */
 	@DeleteMapping("/{id}")
 	@Transactional
 	public void excluir(@PathVariable Long id) {
-		repository.deleteById(id);
+		//recuperei médico do banco de dados
+		var medico = repository.getReferenceById(id);
+		
+		//setar o atributo 'ativo' como 'inativo'(false)
+		//a jpa vai disparar o update automaticamente após essas mudanças pois temos o @transactional
+		medico.excluir();
 	}
 }

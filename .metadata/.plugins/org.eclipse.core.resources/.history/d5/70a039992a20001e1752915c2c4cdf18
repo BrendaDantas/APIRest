@@ -1,0 +1,86 @@
+package med.voll.api.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
+import med.voll.api.medico.DadosAtualizacaoMedico;
+import med.voll.api.medico.DadosCadastroMedico;
+import med.voll.api.medico.DadosListagemMedico;
+import med.voll.api.medico.Medico;
+import med.voll.api.medico.MedicoRepository;
+
+//1.@ - para o spring carregar essa classe durante a inicialização do projeto
+//2.@ - o spring vai chamar esse controller quando chegar uma requisição para /medicos
+
+@RestController
+@RequestMapping("/medicos")
+public class MedicoController {
+	
+	//Autowired para determinar que é o spring quem irá instaciar e passar o atributo repository
+	//dentro da classe controller
+	
+	@Autowired
+	private MedicoRepository repository;
+
+	/*aqui eu digo qual o verbo do protocolo http que esse método vai lidar. Logo, se chegar 
+	uma requisição do tipo post para a url "/medicos", o spring vai chamar o método abaixo.
+	@RequestBody é para o spring entender que essas informações estão vindo no corpo da requisição
+	para receber os dados, utilizei o record padrao DTO
+	@Transactional é porque irei escrever no banco de dados*/
+	
+	@PostMapping
+	@Transactional
+	public void cadastrar(@RequestBody @Valid DadosCadastroMedico dados) {
+		//farei uma conversão - recebo um dto e converto para um objeto do tipo medico
+		//repository é quem acessa o banco de dados
+		repository.save(new Medico(dados));
+	}
+	
+	//a pageable é uma interface do próprio spring, assim não precisamos fazer tudo na mão
+	//@Page para mudar o padrão da paginação (se o parametro não for passado na url)
+	@GetMapping
+	public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
+		//como o findall me retorn um list de medico(entidade jpa), mas o retorno do método precisa ser list de dadoslistagemmedico
+		//então irei converter de medico para DadosListagemMedico
+		
+		//não precisa do 'stream' porque o findall devolve um page e o page já tem um método stream
+		//não precisa também do 'tolist' porque quando chamamos o 'map', ele já faz a conversão e devolve um page do DTO automaticamente
+		//continuamos fazendo um map pois ele devolve um page de 'médico' mas queremos um page de 'dados listagem médico' 
+		return repository.findAll(paginacao).map(DadosListagemMedico::new);
+	}
+	
+	@PutMapping
+	@Transactional
+	public void atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados ) {
+		/*todo o trecho de código vai rodar dentro de uma transação (@transactional) 
+		e na JPA, se você carrega uma entidade do banco de dados e muda algum atributo,
+		quando a transação for comitada, a JPA detecta que teve uma mudança no atributo e faz update sozinho.*/
+		
+		//repository é quem acessa o banco de dados
+		//chamei o medico pelo id
+		var medico = repository.getReferenceById(dados.id());
+		//chamei o método para atualizar os dados baseado no DTO
+		medico.atualizarInformacoes(dados);		
+	}	
+	
+	/*Tenho que carregar a entidade do banco de dados, inativá-la
+	 * 
+	 */
+	@DeleteMapping("/{id}")
+	@Transactional
+	public void excluir(@PathVariable Long id) {
+		
+	}
+}
