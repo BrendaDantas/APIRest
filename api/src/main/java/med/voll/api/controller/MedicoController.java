@@ -1,8 +1,8 @@
 package med.voll.api.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,11 +42,17 @@ public class MedicoController {
 		repository.save(new Medico(dados));
 	}
 	
+	//a pageable é uma interface do próprio spring, assim não precisamos fazer tudo na mão
+	
 	@GetMapping
-	public List<DadosListagemMedico> listar() {
+	public Page<DadosListagemMedico> listar(Pageable paginacao) {
 		//como o findall me retorn um list de medico(entidade jpa), mas o retorno do método precisa ser list de dadoslistagemmedico
 		//então irei converter de medico para DadosListagemMedico
-		return repository.findAll().stream().map(DadosListagemMedico::new).toList();
+		
+		//não precisa do 'stream' porque o findall devolve um page e o page já tem um método stream
+		//não precisa também do 'tolist' porque quando chamamos o 'map', ele já faz a conversão e devolve um page do DTO automaticamente
+		//continuamos fazendo um map pois ele devolve um page de 'médico' mas queremos um page de 'dados listagem médico' 
+		return repository.findAll(paginacao).map(DadosListagemMedico::new);
 	}
 	
 }

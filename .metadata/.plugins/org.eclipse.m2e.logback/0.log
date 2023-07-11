@@ -1220,3 +1220,21 @@
 2023-07-11 14:17:32,105 [Worker-191: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2023-07-11 14:17:32,123 [Worker-191: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
 2023-07-11 14:17:32,129 [Worker-191: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\brend\OneDrive\Documentos\ALURA\springboot\api\src\test\resources
+2023-07-11 14:40:00,528 [Worker-196: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-07-11 14:40:00,588 [Worker-196: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2023-07-11 14:40:00,593 [Worker-196: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\brend\OneDrive\Documentos\ALURA\springboot\api\src\test\resources
+2023-07-11 14:42:57,025 [Worker-196: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-07-11 14:42:57,046 [Worker-196: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2023-07-11 14:42:57,055 [Worker-196: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\brend\OneDrive\Documentos\ALURA\springboot\api\src\test\resources
+2023-07-11 14:43:40,761 [Worker-188: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-07-11 14:43:40,774 [Worker-188: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2023-07-11 14:43:40,779 [Worker-188: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\brend\OneDrive\Documentos\ALURA\springboot\api\src\test\resources
+2023-07-11 14:45:16,743 [Worker-194: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-07-11 14:45:16,757 [Worker-194: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2023-07-11 14:45:16,765 [Worker-194: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\brend\OneDrive\Documentos\ALURA\springboot\api\src\test\resources
+2023-07-11 14:45:20,161 [Worker-196: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-07-11 14:45:20,185 [Worker-196: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2023-07-11 14:45:20,191 [Worker-196: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\brend\OneDrive\Documentos\ALURA\springboot\api\src\test\resources
+2023-07-11 14:45:24,695 [Worker-188: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-07-11 14:45:24,722 [Worker-188: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2023-07-11 14:45:24,729 [Worker-188: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\brend\OneDrive\Documentos\ALURA\springboot\api\src\test\resources
