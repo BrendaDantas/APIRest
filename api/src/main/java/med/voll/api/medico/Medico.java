@@ -44,6 +44,9 @@ public class Medico {
 	@Embedded
 	private Endereco endereco;
 	
+	public Medico() {
+	}
+	
 	//contrutor que trabalha com os DTOs
 	public Medico(DadosCadastroMedico dados) {
 		this.nome = dados.nome();
@@ -54,5 +57,33 @@ public class Medico {
 		this.endereco = new Endereco(dados.endereco());
 		
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public String getCrm() {
+		return crm;
+	}
+
+	public Especialidade getEspecialidade() {
+		return especialidade;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}	
 
 }
