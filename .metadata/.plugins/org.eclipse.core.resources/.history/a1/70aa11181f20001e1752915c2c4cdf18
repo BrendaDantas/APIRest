@@ -1,0 +1,5 @@
+package med.voll.api.medico;
+
+public record DadosAtualizacaoMedico(Long id, String nome, String telefone, Endereco endereco) {
+
+}

@@ -1,0 +1,12 @@
+package med.voll.api.medico;
+
+import med.voll.api.endereco.DadosEndereco;
+
+//Todos os dados são opcionais, exceto o ID
+public record DadosAtualizacaoMedico(
+		Long id, 
+		String nome, 
+		String telefone, 
+		DadosEndereco endereco) {
+
+}

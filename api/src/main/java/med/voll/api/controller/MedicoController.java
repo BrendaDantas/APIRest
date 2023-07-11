@@ -7,11 +7,13 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
+import med.voll.api.medico.DadosAtualizacaoMedico;
 import med.voll.api.medico.DadosCadastroMedico;
 import med.voll.api.medico.DadosListagemMedico;
 import med.voll.api.medico.Medico;
@@ -33,13 +35,14 @@ public class MedicoController {
 	/*aqui eu digo qual o verbo do protocolo http que esse método vai lidar. Logo, se chegar 
 	uma requisição do tipo post para a url "/medicos", o spring vai chamar o método abaixo.
 	@RequestBody é para o spring entender que essas informações estão vindo no corpo da requisição
-	para receber os dados, utilizei o record
-	padrao DTO*/
+	para receber os dados, utilizei o record padrao DTO
+	@Transactional é porque irei escrever no banco de dados*/
 	
 	@PostMapping
 	@Transactional
 	public void cadastrar(@RequestBody @Valid DadosCadastroMedico dados) {
 		//farei uma conversão - recebo um dto e converto para um objeto do tipo medico
+		//repository é quem acessa o banco de dados
 		repository.save(new Medico(dados));
 	}
 	
@@ -56,4 +59,17 @@ public class MedicoController {
 		return repository.findAll(paginacao).map(DadosListagemMedico::new);
 	}
 	
+	@PutMapping
+	@Transactional
+	public void atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados ) {
+		/*todo o trecho de código vai rodar dentro de uma transação (@transactional) 
+		e na JPA, se você carrega uma entidade do banco de dados e muda algum atributo,
+		quando a transação for comitada, a JPA detecta que teve uma mudança no atributo e faz update sozinho.*/
+		
+		//repository é quem acessa o banco de dados
+		//chamei o medico pelo id
+		var medico = repository.getReferenceById(dados.id());
+		//chamei o método para atualizar os dados baseado no DTO
+		medico.atualizarInformacoes(dados);		
+	}	
 }

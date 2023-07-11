@@ -65,6 +65,10 @@ public class Medico {
 	public String getNome() {
 		return nome;
 	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}	
 
 	public String getEmail() {
 		return email;
@@ -73,6 +77,10 @@ public class Medico {
 	public String getTelefone() {
 		return telefone;
 	}
+	
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}	
 
 	public String getCrm() {
 		return crm;
@@ -84,6 +92,24 @@ public class Medico {
 
 	public Endereco getEndereco() {
 		return endereco;
+	}	
+	
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public void atualizarInformacoes(DadosAtualizacaoMedico dados) {
+		if (dados.nome() != null) {
+			this.nome = dados.nome();
+		}
+		if (dados.telefone() != null) {
+			this.telefone = dados.telefone();
+		}
+		if(dados.endereco() != null) {
+			this.endereco.atualizarInformacoes(dados.endereco());
+		}
+		
+		
 	}	
 
 }
